@@ -17,7 +17,7 @@ def get_samples(n):
 
 
 def generator(x):
-    return np.sin(x * 2) / x / 100
+    return np.sin(x * 2) / x
 
 
 def fit(x, y):
@@ -56,7 +56,7 @@ def r_sq(Y, Y_hat):
 min_x = min(x)
 max_x = max(x)
 
-for deg in range(2, 15, 1):
+for deg in range(2, 8, 1):
     # init
     curve_x = np.linspace(min_x - 1, max_x + 1, 100)
     curve_y = generator(curve_x)
@@ -76,7 +76,7 @@ for deg in range(2, 15, 1):
     y_hat = x_changed.dot(w)
     y_hat = np.reshape(y_hat, (y_hat.shape[0],))
     y_reshaped = np.reshape(y, (y.shape[0],))
-    print(r_sq(y_reshaped, y_hat))
+    plt.title("Degree="+ str(deg) + " R_sq= " + str(r_sq(y_reshaped, y_hat)))
 
     curve_x = np.reshape(curve_x, (curve_x.shape[0], 1))
     curve_x = add_bias(curve_x)
@@ -84,4 +84,4 @@ for deg in range(2, 15, 1):
 
     y_hat = curve_x.dot(w)
     plt.plot(curve_x[:, 0], y_hat)
-    plt.show(block = True)
+    plt.show()
