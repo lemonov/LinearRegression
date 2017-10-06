@@ -76,6 +76,8 @@ for deg in range(2, 8, 1):
     y_hat = x_changed.dot(w)
     y_hat = np.reshape(y_hat, (y_hat.shape[0],))
     y_reshaped = np.reshape(y, (y.shape[0],))
+    print(y_reshaped.shape)
+    print(y_hat.shape)
     plt.title("Degree="+ str(deg) + " R_sq= " + str(r_sq(y_reshaped, y_hat)))
 
     curve_x = np.reshape(curve_x, (curve_x.shape[0], 1))
